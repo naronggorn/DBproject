@@ -1,0 +1,117 @@
+<br>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Add Staff</h5>
+                <h6 class="card-subtitle mb-12 text-muted">Add Staff To Database</h6>
+                <p class="card-text">
+                    <form action="/add-staff" method="POST">
+                        <div class="form-group">
+                            <label for="staff_id">Staff ID</label>
+                            <input type="text" class="form-control" name="staff_id"  id="staff_id" placeholder="0800000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="นายขยัน" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="surname">Surname</label>
+                            <input type="text" class="form-control" name="surname" id="surname" placeholder="มั่นเพียร" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Staff</h5>
+                <h6 class="card-subtitle mb-12 text-muted">All Staff</h6>
+                <p class="card-text">
+                    <table class="table table-hover table-responsive-lg text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">ลำดับ</th>
+                                <th scope="col">รหัสเจ้าหน้าที่</th>
+                                <th scope="col">ชื่อ</th>
+                                <th scope="col">สกุล</th>
+                                <th scope="col">แก้ไข</th>
+                                <th scope="col">ลบ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="parent"></tbody>
+                    </table>
+                </p>
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Staff</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="modal_parent_id">Staff ID</label>
+                                    <input type="text" class="form-control" id="modal_staff_id" placeholder="03225490"
+                                        autofocus required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="modal_f_name">Name</label>
+                                    <input type="text" class="form-control" id="modal_name" placeholder="นายขยัน"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="modal_m_name">Surname</label>
+                                    <input type="text" class="form-control" id="modal_surname"
+                                        placeholder="นางมั่นเพียร" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="modal_password">Password</label>
+                                    <input type="password" class="form-control" id="modal_password"
+                                        placeholder="password">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" onclick="saveEdit()" class="btn btn-primary">Save</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Delete Staff</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="confirm"></div>
+                            <div class="modal-footer">
+                                <button type="button" onclick="deleteParent()" class="btn btn-danger"
+                                    data-dismiss="modal">Delete</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>

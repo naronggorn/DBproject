@@ -1,0 +1,167 @@
+<br>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Add Parent</h5>
+                <h6 class="card-subtitle mb-12 text-muted">Add Parent To Database</h6>
+                <p class="card-text">
+                    <form action="/add-parent" method="POST">
+                        <div class="form-group">
+                            <label for="parent_id">Parent ID</label>
+                            <input type="text" class="form-control" name="parent_id" id="parent_id"
+                                placeholder="03225490" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="f_name">Father Name</label>
+                            <input type="text" class="form-control" id="f_name" name="f_name" placeholder="นายขยัน"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="m_name">Mother Name</label>
+                            <input type="text" class="form-control" id="m_name" name="m_name" placeholder="นางมั่นเพียร"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="p_name">Parent Name</label>
+                            <input type="text" class="form-control" id="p_name" name="p_name" placeholder="นายเก่งกาจ"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="p_addr">Parent Address</label>
+                            <input type="text" class="form-control" id="p_addr" name="p_addr"
+                                placeholder="126 ถนนประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพฯ 10140" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="p_tel">Parent Phone Number</label>
+                            <input type="text" class="form-control" id="p_tel" name="p_tel" placeholder="0810000000"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="p_rel">Parent Relation</label>
+                            <input type="text" class="form-control" id="p_rel" name="p_rel" placeholder="บิดา" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password"
+                                placeholder="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Parent</h5>
+                <h6 class="card-subtitle mb-12 text-muted">All Parent</h6>
+                <p class="card-text">
+                    <table class="table table-hover table-responsive-lg text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">ลำดับ</th>
+                                <th scope="col">รหัสผู้ปกครอง</th>
+                                <th scope="col">บิดา</th>
+                                <th scope="col">มารดา</th>
+                                <th scope="col">ผู้ปกครอง</th>
+                                <th scope="col">ที่อยู่</th>
+                                <th scope="col">เบอร์โทรศัพท์</th>
+                                <th scope="col">ความสัมพันธ์</th>
+                                <th scope="col">แก้ไข</th>
+                                <th scope="col">ลบ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="parent"></tbody>
+                    </table>
+                </p>
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Parent</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/edit-parent" method="POST" id="editForm">
+                                    <div class="form-group">
+                                        <label for="modal_parent_id">Parent ID</label>
+                                        <input type="text" class="form-control" id="modal_parent_id" name="parent_id"
+                                            placeholder="03225490" autofocus required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="modal_f_name">Father Name</label>
+                                        <input type="text" class="form-control" id="modal_f_name" name="f_name"
+                                            placeholder="นายขยัน" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="modal_m_name">Mother Name</label>
+                                        <input type="text" class="form-control" id="modal_m_name" name="m_name"
+                                            placeholder="นางมั่นเพียร" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="modal_p_name">Parent Name</label>
+                                        <input type="text" class="form-control" id="modal_p_name" name="p_name"
+                                            placeholder="นายเก่งกาจ" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="modal_p_addr">Parent Address</label>
+                                        <input type="text" class="form-control" id="modal_p_addr" name="p_addr"
+                                            placeholder="126 ถนนประชาอุทิศ แขวงบางมด เขตทุ่งครุ กรุงเทพฯ 10140"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="modal_p_tel">Parent Phone Number</label>
+                                        <input type="text" class="form-control" id="modal_p_tel" name="p_tel"
+                                            placeholder="0810000000" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="modal_p_rel">Parent Relation</label>
+                                        <input type="text" class="form-control" id="modal_p_rel" name="p_rel"
+                                            placeholder="บิดา" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="modal_password">Password</label>
+                                        <input type="password" class="form-control" id="modal_password" name="password"
+                                            placeholder="password">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" onclick="saveEdit()" class="btn btn-primary">Save</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Delete Parent</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="confirm"></div>
+                            <div class="modal-footer">
+                                <button type="button" onclick="deleteParent()" class="btn btn-danger"
+                                    data-dismiss="modal">Delete</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
